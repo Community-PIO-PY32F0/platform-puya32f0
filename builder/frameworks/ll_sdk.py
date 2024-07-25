@@ -7,7 +7,7 @@ board = env.BoardConfig()
 
 env.SConscript("_bare.py")
 
-LL_SDK_DIR = platform.get_package_dir("framework-cmsis-puya-py32f0")
+LL_SDK_DIR = platform.get_package_dir("framework-puya-py32f0-cmsis")
 
 env.Append(
     CPPPATH=[
