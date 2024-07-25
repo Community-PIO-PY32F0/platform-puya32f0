@@ -14,7 +14,7 @@
 from platformio.public import PlatformBase
 
 
-class Py32f0Platform(PlatformBase):
+class Puya32f0Platform(PlatformBase):
     def get_boards(self, id_=None):
         result = super().get_boards(id_)
         if not result:
