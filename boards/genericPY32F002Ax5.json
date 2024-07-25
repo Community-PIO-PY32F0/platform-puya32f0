@@ -9,7 +9,7 @@
       "svd_path": "py32f002axx.svd"
     },
     "frameworks": [
-      "ch32v003fun"
+      "puya-py32f0-ll-sdk"
     ],
     "name": "Generic PY32F002Ax5",
     "upload": {
