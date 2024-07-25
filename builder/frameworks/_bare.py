@@ -56,7 +56,6 @@ env.Append(
     # ASM flags
     ASFLAGS=[
         *ARCH_FLAGS,
-        "-Wa,--warn",
     ],
 
     # ASM with CPP flags 
@@ -130,7 +129,16 @@ env.BuildSources(
         "-<*>",
         # TODO: match system file properly
         "+<system_py32f0xx.c>",
-        "+<gcc/startup_%s>"
+        "+<gcc/startup_%s.s>"
         % startup_file_suffix
     ]
 )
+
+# env.BuildSources(
+#     os.path.join("$BUILD_DIR", "FrameworkCMSISStartup"),  os.path.join(sources_path, 'gcc'),
+#     src_filter=[
+#         "-<*>",
+#         "+<startup_%s.c>"
+#         % startup_file_suffix
+#     ]
+# )
