@@ -2,7 +2,7 @@
 <device schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" noNamespaceSchemaLocation="CMSIS-SVD.xsd">
   <vendor>Puya</vendor>
   <vendorID>Puya</vendorID>
-  <name>PY32F072xx</name>
+  <name>PY32F072Cxx</name>
   <series>PY32F0</series>
   <version>1.0.0</version>
   <description>Arm 32-bit Cortex-M0+ Microcontroller based device, CPU clock up to 48 MHz.</description>
@@ -1405,14 +1405,9 @@
               <bitRange>[25:20]</bitRange>
             </field>
             <field>
-              <name>VCDIV_EN</name>
-              <description>VCDIV_EN</description>
-              <bitRange>[26:26]</bitRange>
-            </field>
-            <field>
-              <name>VCSEL</name>
-              <description>VCSEL</description>
-              <bitRange>[27:27]</bitRange>
+              <name>COMP_VCSEL</name>
+              <description>COMP_VCSEL</description>
+              <bitRange>[27:26]</bitRange>
             </field>
             <field>
               <name>COMP_OUT</name>
@@ -7646,8 +7641,8 @@
               <bitRange>[5:5]</bitRange>
             </field>
             <field>
-              <name>RTCAPBEN</name>
-              <description>RTC APB clock enable</description>
+              <name>TIMDIVEN</name>
+              <description>desc TIMDIVEN</description>
               <bitRange>[10:10]</bitRange>
             </field>
             <field>

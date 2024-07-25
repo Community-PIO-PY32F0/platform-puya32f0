@@ -2,41 +2,50 @@
   "name": "puya32f0",
   "title": "PUYA PY32F0",
   "description": "PUYA PY32F0 Arm Cortex-M0+ MCU development platform",
-  "homepage": "https://mycompany.com",
+  "homepage": "https://www.puyasemi.com/mcu_weichuliqi.html",
   "license": "Apache-2.0",
   "keywords": ["PUYA", "PY32F0", "ARM", "dev-platform", "Cortex-M"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/platformio/platform-myplatform.git"
+    "url": "https://github.com/Community-PIO-PY32F0/platform-puya32f0.git"
   },
   "version": "0.0.1",
   "engines": {
     "platformio": "^6"
   },
   "frameworks": {
-    "ll-sdk": {
-      "package": "framework-puya32f0-ll-sdk",
+    "puya-py32f0-ll-sdk": {
+      "package": "framework-puya-py32f0-ll-sdk",
       "script": "builder/frameworks/ll_sdk.py",
       "description": "PUYA PY32F0 Low-Level SDK",
       "title": "PUYA PY32F0 Low-Level SDK",
-      "homepage": "https://mycompany.com"
+      "homepage": "https://www.puyasemi.com/mcu_weichuliqi.html"
     }
   },
   "packages": {
     "toolchain-gccarmnoneeabi": {
       "type": "toolchain",
+      "optional": false,
       "owner": "platformio",
       "version": ">=1.40803.0,<1.40805.0"
     },
     "tool-pyocd@^2.3600.0": {
       "type": "uploader",
+      "optional": false,
       "owner": "platformio",
       "version": ">=2.3600.0"
     },
-    "framework-puya32f0-ll-sdk": {
+    "framework-puya-py32f0-ll-sdk": {
       "type": "framework",
+      "optional": false,
       "owner": "platformio",
-      "version": ">=0.0.1"
+      "version": "https://github.com/Community-PIO-PY32F0/framework-puya-py32f0-ll-sdk.git"
+    },
+    "framework-puya-py32f0-cmsis": {
+      "type": "framework",
+      "optional": false,
+      "owner": "platformio",
+      "version": "https://github.com/Community-PIO-PY32F0/framework-puya-py32f0-cmsis.git"
     }
   }
 }
