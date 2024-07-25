@@ -93,8 +93,9 @@ env.Append(
         "-specs=nosys.specs",
         "-static",
         "-Wl,--gc-sections",
-        #"-Wl,--print-memory-usage",
-        "-Wl,-Map=$BUILD_DIR/app.map"
+        "-Wl,--print-memory-usage",
+        "-Wl,-Map=$BUILD_DIR/app.map",
+        "-Wl,--no-warn-rwx-segments"
     ],
 
     CPPDEFINES=[

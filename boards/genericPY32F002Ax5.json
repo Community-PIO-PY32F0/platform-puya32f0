@@ -13,8 +13,8 @@
     ],
     "name": "Generic PY32F002Ax5",
     "upload": {
-      "maximum_ram_size": 2048,
-      "maximum_size": 16384,
+      "maximum_ram_size": 3072,
+      "maximum_size": 20480,
       "protocol": "cmsis-dap",
       "protocols": [
         "cmsis-dap"
