@@ -66,7 +66,7 @@ env.Append(
     ],
 
     # C flags
-    CCFLAGS=[
+    CFLAGS=[
         *ARCH_FLAGS,
         *OPTIMIZATION_FLAGS,
         "-std=c99",
@@ -94,12 +94,16 @@ env.Append(
         "-specs=nosys.specs",
         "-static",
         "-Wl,--gc-sections",
-        "-Wl,--print-memory-usage",
+        #"-Wl,--print-memory-usage",
         "-Wl,-Map=$BUILD_DIR/app.map"
     ],
 
     CPPDEFINES=[
-        mcu_type.upper(),
+        mcu_type.upper().replace("X", "x"),
+    ],
+
+    CDEFINES=[
+        mcu_type.upper().replace("X", "x"),
     ],
 
     LIBS=["c", "m"]
@@ -109,6 +113,10 @@ env.Replace(LDSCRIPT_PATH=ld_script)
 
 env.Append(
     CPPPATH=[
+        os.path.join(CMSIS_DIR, "CMSIS", "Core", "Include"),
+        os.path.join(CMSIS_DEVICE_DIR, "Include")
+    ],
+    CPATH=[
         os.path.join(CMSIS_DIR, "CMSIS", "Core", "Include"),
         os.path.join(CMSIS_DEVICE_DIR, "Include")
     ],
