@@ -29,3 +29,19 @@ env.Append(
         "USE_FULL_LL_DRIVER",
     ],
 )
+
+env.BuildSources(
+    os.path.join("$BUILD_DIR", "FrameworkLLDriver"), os.path.join(LL_SDK_DIR, "PY32F0xx_LL_Driver", "Src", ),
+    src_filter=[
+        "-<*>",
+        "+<*.c>",
+    ]
+)
+
+env.BuildSources(
+    os.path.join("$BUILD_DIR", "FrameworkLLBSP"), os.path.join(LL_SDK_DIR, "PY32F0xx_LL_BSP", "Src", ),
+    src_filter=[
+        "-<*>",
+        "+<*.c>",
+    ]
+)
