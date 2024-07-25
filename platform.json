@@ -29,7 +29,7 @@
       "owner": "platformio",
       "version": ">=1.40803.0,<1.40805.0"
     },
-    "tool-pyocd@^2.3600.0": {
+    "tool-pyocd": {
       "type": "uploader",
       "optional": false,
       "owner": "platformio",
