@@ -134,12 +134,3 @@ env.BuildSources(
         % startup_file_suffix
     ]
 )
-
-# env.BuildSources(
-#     os.path.join("$BUILD_DIR", "FrameworkCMSISStartup"),  os.path.join(sources_path, 'gcc'),
-#     src_filter=[
-#         "-<*>",
-#         "+<startup_%s.c>"
-#         % startup_file_suffix
-#     ]
-# )

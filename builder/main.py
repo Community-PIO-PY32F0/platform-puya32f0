@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import sys
+import os
 from os.path import join
 
 from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild,
@@ -87,7 +88,7 @@ if "nobuild" in COMMAND_LINE_TARGETS:
     target_firm = join("$BUILD_DIR", "${PROGNAME}.bin")
 else:
     target_elf = env.BuildProgram()
-    target_firm = env.ElfToBin(join("$BUILD_DIR", "${PROGNAME}"), target_elf)
+    target_firm = env.ElfToHex(join("$BUILD_DIR", "${PROGNAME}"), target_elf)
     env.Depends(target_firm, "checkprogsize")
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
@@ -106,6 +107,12 @@ AlwaysBuild(target_size)
 # Target: Upload by default .bin file
 #
 
+PLATFORM_DIR = platform.get_dir()
+PYOCD_TOOL_DIR = platform.get_package_dir("tool-pyocd")
+PYOCD_PATH = os.path.join(PYOCD_TOOL_DIR, "pyocd.py")
+PYOCD_CONFIG_PATH = os.path.join(PLATFORM_DIR, "misc", "pyocd.yaml")
+mcu_type = str(board.get("build.mcu", "")).lower()
+
 upload_protocol = env.subst("$UPLOAD_PROTOCOL")
 debug_tools = board.get("debug.tools", {})
 upload_source = target_firm
@@ -117,12 +124,10 @@ if upload_protocol == "cmsis-dap":
     assert debug_server
 
     if debug_server.get("package") == "tool-pyocd":
-        env.Replace(
-            UPLOADER=join(platform.get_package_dir("tool-pyocd") or "",
-                          "pyocd-flashtool.py"),
-            UPLOADERFLAGS=debug_server.get("arguments", [])[1:],
-            UPLOADCMD='"$PYTHONEXE" "$UPLOADER" $UPLOADERFLAGS $SOURCE'
-        )
+        upload_actions = [
+            env.VerboseAction('"$PYTHONEXE" "%s" erase --target %s --chip --config "%s"' % (PYOCD_PATH, mcu_type, PYOCD_CONFIG_PATH)),
+            env.VerboseAction('"$PYTHONEXE" "%s" load $BUILD_DIR/${PROGNAME}.hex --dir %s -t %s --config "%s"' % 
+                              (PYOCD_PATH, PLATFORM_DIR, mcu_type, PYOCD_CONFIG_PATH), "Uploading $SOURCE")]
 
 # custom upload tool
 elif upload_protocol == "custom":
