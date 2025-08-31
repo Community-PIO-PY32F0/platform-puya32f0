@@ -125,7 +125,7 @@ if upload_protocol == "cmsis-dap":
 
     if debug_server.get("package") == "tool-pyocd":
         upload_actions = [
-            env.VerboseAction('"$PYTHONEXE" "%s" erase --target %s --chip --config "%s"' % (PYOCD_PATH, mcu_type, PYOCD_CONFIG_PATH)),
+            env.VerboseAction('"$PYTHONEXE" "%s" erase --target %s --chip --config "%s"' % (PYOCD_PATH, mcu_type, PYOCD_CONFIG_PATH), "Erasing chip"),
             env.VerboseAction('"$PYTHONEXE" "%s" load $BUILD_DIR/${PROGNAME}.hex --dir %s -t %s --config "%s"' % 
                               (PYOCD_PATH, PLATFORM_DIR, mcu_type, PYOCD_CONFIG_PATH), "Uploading $SOURCE")]
 
