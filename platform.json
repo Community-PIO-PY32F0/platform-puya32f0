@@ -20,6 +20,13 @@
       "description": "PUYA PY32F0 Low-Level SDK",
       "title": "PUYA PY32F0 Low-Level SDK",
       "homepage": "https://www.puyasemi.com/mcu_weichuliqi.html"
+    },
+    "puya-py32f0-hal-sdk": {
+      "package": "framework-puya-py32f0-hal-sdk",
+      "script": "builder/frameworks/hal_sdk.py",
+      "description": "PUYA PY32F0 HAL SDK",
+      "title": "PUYA PY32F0 HAL SDK",
+      "homepage": "https://www.puyasemi.com/mcu_weichuliqi.html"
     }
   },
   "packages": {
@@ -46,6 +53,12 @@
       "optional": false,
       "owner": "platformio",
       "version": "https://github.com/Community-PIO-PY32F0/framework-puya-py32f0-cmsis.git"
+    },
+    "framework-puya-py32f0-hal-sdk": {
+      "type": "framework",
+      "optional": false,
+      "owner": "platformio",
+      "version": "https://github.com/Community-PIO-PY32F0/framework-puya-py32f0-hal-sdk.git"
     }
   }
 }
