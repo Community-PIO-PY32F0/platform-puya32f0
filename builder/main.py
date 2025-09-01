@@ -110,7 +110,7 @@ AlwaysBuild(target_size)
 PLATFORM_DIR = platform.get_dir()
 PYOCD_TOOL_DIR = platform.get_package_dir("tool-pyocd")
 PYOCD_PATH = os.path.join(PYOCD_TOOL_DIR, "pyocd.py")
-PYOCD_CONFIG_PATH = os.path.join(PLATFORM_DIR, "misc", "pyocd.yaml")
+PYOCD_PACK_FILE = os.path.join(PLATFORM_DIR, "misc", "Puya.PY32F0xx_DFP.1.1.7.pack")
 mcu_type = str(board.get("build.mcu", "")).lower()
 
 upload_protocol = env.subst("$UPLOAD_PROTOCOL")
@@ -125,9 +125,9 @@ if upload_protocol == "cmsis-dap":
 
     if debug_server.get("package") == "tool-pyocd":
         upload_actions = [
-            env.VerboseAction('"$PYTHONEXE" "%s" erase --target %s --chip --config "%s"' % (PYOCD_PATH, mcu_type, PYOCD_CONFIG_PATH), "Erasing chip"),
-            env.VerboseAction('"$PYTHONEXE" "%s" load $BUILD_DIR/${PROGNAME}.hex --dir %s -t %s --config "%s"' % 
-                              (PYOCD_PATH, PLATFORM_DIR, mcu_type, PYOCD_CONFIG_PATH), "Uploading $SOURCE")]
+            env.VerboseAction('"$PYTHONEXE" "%s" erase --target %s --chip --pack "%s"' % (PYOCD_PATH, mcu_type, PYOCD_PACK_FILE), "Erasing chip"),
+            env.VerboseAction('"$PYTHONEXE" "%s" load $BUILD_DIR/${PROGNAME}.hex --dir %s -t %s --pack "%s"' % 
+                              (PYOCD_PATH, PLATFORM_DIR, mcu_type, PYOCD_PACK_FILE), "Uploading $SOURCE")]
 
 # custom upload tool
 elif upload_protocol == "custom":
